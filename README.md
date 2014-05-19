@@ -1,4 +1,4 @@
-droidcl
+androidcl
 =======
 
 Sample app that runs OpenCL kernels to process camera feed on Android devices
