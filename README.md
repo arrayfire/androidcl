@@ -6,12 +6,10 @@ Sample app that runs OpenCL kernels to process camera feed on Android devices
 
 File Structure
 --------------
-<root>
-   |__ assets (contains the opencl kernels source file)
-   |
-   |__ jni (JNI source code that helps run opencl kernels and the necessary native c/c++ code)
-   |
-   |__ src (java source files)
+
+ * assets (contains the opencl kernels source file)
+ * jni (JNI source code that helps run opencl kernels and the necessary native c/c++ code)
+ * src (java source files)
 
 
 How to build the native code?
