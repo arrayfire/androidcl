@@ -29,6 +29,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private Rect	mSrcRect;
     private Rect	mTrgtRect;
     private int     mChoice;
+    private String  mDisplayStr;
 
     native private void runfilter(Bitmap out, byte[] in, int width, int height, int choice);
 
@@ -41,6 +42,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mPaint 		= new Paint();
         mPaint.setTextSize(64);
         mPaint.setColor(0xFFFF0000);
+        mDisplayStr = new String("nv21 to rgba8888");
     }
 
     public void surfaceCreated(SurfaceHolder pHolder) {
@@ -107,6 +109,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     public void setProcessedPreview(int choice) {
     	mChoice = choice;
+        if (choice==0)
+            mDisplayStr = "nv21 to rgba8888";
+        else if (choice==1)
+            mDisplayStr = "Decode & Laplacian operator";
     }
 
     public void onPreviewFrame(byte[] data, Camera camera) {
@@ -123,7 +129,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         if( mCamera != null ) {
             if( mBackBuffer!=null ) {
             	pCanvas.drawBitmap(mBackBuffer, mSrcRect, mTrgtRect, null);
-            	pCanvas.drawText("nv21 to rgba", 64, 64, mPaint);
+            	pCanvas.drawText(mDisplayStr, 64, 64, mPaint);
             }
 			mCamera.addCallbackBuffer(mVideoSource);
         }

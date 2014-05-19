@@ -1,5 +1,6 @@
 bin/
 gen/
 libs/
+obj/
 .classpath
 .settings/
